@@ -1,8 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const path = require('path');
-
 const configViewEngine = require('./config/viewEngine');
 const router = require('./routes/web');
 
@@ -12,6 +10,7 @@ const port = process.env.port || 3002;
 //views engine ejs.
 configViewEngine(app);
 
+// router api.
 app.use('/',router);
 
 app.listen(port, () => {
