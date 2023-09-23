@@ -6,7 +6,12 @@ const router = require('./routes/web');
 
 const app = express();
 const port = process.env.port || 3002;
+const db = require('./config/db');
+// const readDb = require('./controllers/readDatabase');
 
+// connect db 
+db.connect();
+// readDb.readDatabase();
 //views engine ejs.
 configViewEngine(app);
 
