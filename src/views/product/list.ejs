@@ -1,0 +1,32 @@
+<div class="container">
+  <h3>Danh sách sản phẩm</h3>
+  <div class="card-container">
+  <% for (var i = 0; i < products.length; i++) { %>
+    <div class="card card-product-item">
+      <img src="<%= products[i].product_image %>" class="card-img-top" alt="Product Image" style="width: 100%; height: 300px;">          <div class="card-body">
+        <h5 class="card-title">
+          <%= products[i].product_name %>
+        </h5>
+        <div class="card-text">
+          Price: $<%= products[i].product_price %>
+        </div>
+        <div class="row mt-1 align-items-center">
+          <div class="col-5">
+            <a href="#" class="btn btn-primary center">
+              Mua
+            </a>
+          </div>
+          <div class="col-7 text-right">
+            <a href="#" class="btn btn-primary center">
+              Thêm <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+            
+          </div>
+        </div>
+      </div>  
+    </div>
+  <% } %>
+  </div>
+</div>
+<%=  %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>

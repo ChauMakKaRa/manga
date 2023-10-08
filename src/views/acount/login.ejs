@@ -1,0 +1,49 @@
+<div class="body-account">
+  <div class="wrapper">
+    <form method="POST" action="handleLogin">
+      <h1>Đăng Nhập</h1>
+
+      <div class="error-login">
+        <% if (error) { %>
+          <p><%= error %></p>
+        <% } %> 
+      </div>
+      <div class="message-login">
+        <% if (message) { %>
+          <p><%= message %></p>
+        <% } %> 
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Vui lòng nhập Mail" 
+         class="form-control" id="email"  name="email" />
+        
+      </div>
+
+      <div class="input-box">
+        <input type="password" placeholder="Vui lòng mật khẩu" 
+        class="form-control" id="password" name="password"/>
+      </div>
+  
+      <div class="remember-forgot">
+        <label for="">
+          <input type="checkbox">
+          Remember me
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+  
+      <button type="submit" class="btn">Đăng nhập</button>
+  
+      <div class="register-link">
+        <p>Don't have an account?
+          <a href="/register">Đăng ký</a>
+        </p>
+      </div>
+    </form>
+
+  
+  </div>
+</div>
+
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>

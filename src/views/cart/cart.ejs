@@ -1,0 +1,94 @@
+<style>
+    
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .total-row td {
+            font-weight: bold;
+        }
+        .checkout-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 0px;
+        }
+</style>
+<div class="container">
+    <h2>Giỏ hàng</h2>
+        <table>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Tổng cộng</th>
+            </tr>
+            <tr>
+                <td>Sản phẩm 1</td>
+                <td>
+                    <button class="btn btn-secondarys" onclick="subtractQuantity()">-</button>
+                    <span id="quantity">0</span>
+                    <button class="btn btn-secondarys" onclick="addQuantity()">+</button>
+                </td>
+                <td>
+                    Giá
+                </td>
+                <td>
+                    Giá * số lượng
+                </td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="3">Tổng tiền:</td>
+                <td>35$</td>
+            </tr>
+        </table>
+    <button class="checkout-button" onclick="showInputBox()">Tiến hành thanh toán</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script>
+    let quantity = 0;
+  
+    function subtractQuantity() {
+      if (quantity > 0) {
+        quantity--;
+        document.getElementById("quantity").innerHTML = quantity;
+      }
+    }
+  
+    function addQuantity() {
+      quantity++;
+      document.getElementById("quantity").innerHTML = quantity;
+    }
+
+    function showInputBox() {
+    var buyerName = prompt("Nhập tên người mua:");
+    var buyerEmail = prompt("Nhập địa chỉ email người mua:");
+
+    // Giải pháp khác: sử dụng thuộc tính input type="text"
+    // Nhưng với giải pháp này, thông báo sẽ không có giao diện đẹp như prompt
+    // Ví dụ:
+    // var buyerName = document.getElementById("buyerName").value;
+    // var buyerEmail = document.getElementById("buyerEmail").value;
+
+    if (buyerName && buyerEmail) { // Kiểm tra nếu người dùng đã nhập thông tin
+        // Xử lý thông tin người mua ở đây (ví dụ: gửi dữ liệu thông tin người mua đến máy chủ)
+        alert("Thông tin người mua:\nTên: " + buyerName + "\nEmail: " + buyerEmail);
+    } else {
+        alert("Vui lòng nhập thông tin người mua.");
+    }
+}
+</script>
