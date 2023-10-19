@@ -20,14 +20,25 @@
                   <a class="nav-link active" aria-current="page" href="/">Trang Chủ</a>
                 </li>
                 <li class="nav-item">
+                
                   <a class="nav-link" href="/list">Sản Phẩm</a>
+                  
                 </li>
                 <li class="nav-item">
+                  <% if (!session.image) { %>
+                    <a class="nav-link" href="/login">Liên Hệ</a>
+                  <% } else { %>
                     <a class="nav-link" href="/contact">Liên Hệ</a>
+                  <% } %> 
+
                 </li>
                 
                 <li class="nav-item">
+                  <% if (!session.image) { %>
+                    <a class="nav-link" href="/login">Giỏ Hàng</a>
+                  <% } else { %>
                     <a class="nav-link" href="/cart">Giỏ Hàng</a>
+                  <% } %> 
                 </li> 
                 <% if (!session.image) { %>
                   <li class="nav-item">
