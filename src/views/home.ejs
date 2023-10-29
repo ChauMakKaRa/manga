@@ -36,9 +36,11 @@
         <i>Cùng với sách cũ nói chung, những bộ truyện tranh từng gắn bó với nhiều người cách đây từ 20 - 30 năm, đang có một thị trường sôi động, nhất là trên các trang mạng xã hội bán hàng qua online.         </i>
       </p>      
       <h4>Danh sách sản phẩm</h4>
+
       <div class="card-container">
       <% for (var i = 0; i < products.length; i++) { %>
-        <div class="card card-product-item">
+        <form action="/add-to-cart?id=<%= products[i]._id %>" method="POST">
+        <div class="boxsp card card-product-item">
           <img src="<%= products[i].product_image %>" class="card-img-top" alt="Product Image" style="width: 100%; height: 300px;">          <div class="card-body">
             <h5 class="card-title">
               <%= products[i].product_name %>
@@ -53,48 +55,17 @@
                 </a>
               </div>
               <div class="col-7 text-right">
-                <a href="#?<%= products[i]._id %>"  class="btn btn-primary center cart">
+                <button onclick="themvaogiohang(this)" class="cart btn btn-primary" type="submit">
                   Thêm <i class="fas fa-shopping-cart ml-1"></i>
-                </a>
-                
+                </button>
               </div>
             </div>
           </div>  
         </div>
-      <% } %>
-    </div>
-</div>
+    </form>
+    <% } %>
 
+</div>
+<form action="" method="POST"></form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
-<script>
- var addToCartButtons = document.getElementsByClassName("cart");
-
-// Lặp qua từng nút và đăng ký sự kiện click
-  for (var i = 0; i < addToCartButtons.length; i++) {
-    addToCartButtons[i].addEventListener("click", function(event) {
-      // event.preventDefault();
-      
-      // Truy xuất thông tin sản phẩm
-      // var product = this.parentNode;
-      // var productName = product.querySelector("h3").innerHTML;
-      
-      // // Hiển thị thông tin sản phẩm và giỏ hàng
-      // console.log("Sản phẩm: " + productName);
-      console.log("Đã thêm vào giỏ hàng!");
-    });
-  }
-  var queryString = window.location.search;
-  console.log(queryString);
-  if (queryString) {
-  // Lấy các cặp key-value từ query string
-  var params = new URLSearchParams(queryString);
-
-  // Lấy giá trị của một key cụ thể
-  var value = params.get("cart");
-
-  // Hiển thị giá trị
-  console.log(value);
-}
-  
-</script>

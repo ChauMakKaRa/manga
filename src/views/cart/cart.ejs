@@ -28,67 +28,153 @@
             border: 0px;
         }
 </style>
-<div class="container">
+<form class="container" name="container-form-cart" method="POST" action="/handleFormCart?name=<%= session.name %>" >
     <h2>Giỏ hàng</h2>
         <table>
             <tr>
+                <th></th>
                 <th>Sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Giá</th>
-                <th>Tổng cộng</th>
+                <th class="text-center">Tổng cộng</th>
+                <th></th>
             </tr>
-            <tr>
-                <td>Sản phẩm 1</td>
-                <td>
-                    <button class="btn btn-secondarys" onclick="subtractQuantity()">-</button>
-                    <span id="quantity">0</span>
-                    <button class="btn btn-secondarys" onclick="addQuantity()">+</button>
-                </td>
-                <td>
-                    Giá
-                </td>
-                <td>
-                    Giá * số lượng
-                </td>
-            </tr>
+            <% for (var i = 0; i < carts.length; i++) { %>
+
+                <tr>
+                    <td>
+                        <!-- checkbox  -->
+                        <div class="form-check">
+                            <input class="form-check-input" name="carts[]" onclick="onclickCheckBox()" type="checkbox" value="<%= carts[i]._id %>">
+                        </div>
+                    </td>
+                    <td>
+                        <%= carts[i].items[0].product_name %>
+                    </td>
+                    <td>
+                        <button class="btn btn-secondarys" onclick="subtractQuantity()">-</button>
+                        <span id="quantity" class="quantitys">1</span>
+                        <button class="btn btn-secondarys" onclick="addQuantity()">+</button>
+                    </td>
+                    <td>
+                        <%= carts[i].items[0].product_price %>$
+                    </td>
+                    <td class="price text-center">
+                        <%= carts[i].items[0].product_price*carts[i].items[0].quantity %>$
+                    </td>
+                    <td>
+                        <a href="" data-bs-toggle="modal" data-id="<%= carts[i]._id %>" data-bs-target="#deleteCart">xóa</a>
+                    </td>
+
+                </tr>
+            <% } %>
+    
             <tr class="total-row">
                 <td colspan="3">Tổng tiền:</td>
-                <td>35$</td>
+                <td></td>
+                <td class="text-center" id="priceValue">
+                </td>
+                <td></td>
             </tr>
         </table>
-    <button class="checkout-button" onclick="showInputBox()">Tiến hành thanh toán</button>
-</div>
+    
+        <button type="submit" id="button-paied" class="disabled checkout-button" onclick="renderCheckSubmitBtn()">Thanh toán</button>
+</form>
+
+<!-- delete cart form  -->
+<form name="delete-cart-form" method="POST"></form>
+
+<!-- payed form -->
+<form name="paied-form" method="POST" action=""></form>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+<div class="modal fade" id="deleteCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Xóa sản phẩm</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn bạn chắc chắn muốn xóa khỏi giỏ hàng?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+          <button id="btn-delete-cart" type="button" class="btn btn-danger">Xóa bỏ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
-    let quantity = 0;
-  
+    // form xóa
+    var deleteCart = document.getElementById('deleteCart')
+    var cartId;
+    var deleteForm = document.forms['delete-cart-form'];
+    var containerFormCart = document.forms['container-form-cart'];
+    const buttonPaied = document.getElementById('button-paied');
+    var checkedCount = 0;
+
+    deleteCart.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        cartId = button.getAttribute('data-id');
+    });
+
+    var btnDeleteCart = document.getElementById("btn-delete-cart");
+
+    btnDeleteCart.onclick = function() {
+        deleteForm.action = '/deleteCart?id=' + cartId  + '&_method=DELETE';
+        deleteForm.submit();
+    }
+
+    // đếm số lượng sản phẩm trong giỏ hàng
+    const quantitys = document.getElementById('quantity')
+    let so_luong = 1;
+    quantitys.innerHTML = so_luong;
     function subtractQuantity() {
-      if (quantity > 0) {
-        quantity--;
-        document.getElementById("quantity").innerHTML = quantity;
-      }
+        if (so_luong > 0) {
+            so_luong--;
+            quantitys.innerHTML = so_luong;
+        }
     }
-  
     function addQuantity() {
-      quantity++;
-      document.getElementById("quantity").innerHTML = quantity;
+        so_luong++;
+        quantitys.innerHTML = so_luong;
     }
 
-    function showInputBox() {
-    var buyerName = prompt("Nhập tên người mua:");
-    var buyerEmail = prompt("Nhập địa chỉ email người mua:");
+    // lấy thông tin giao hàng
+    
 
-    // Giải pháp khác: sử dụng thuộc tính input type="text"
-    // Nhưng với giải pháp này, thông báo sẽ không có giao diện đẹp như prompt
-    // Ví dụ:
-    // var buyerName = document.getElementById("buyerName").value;
-    // var buyerEmail = document.getElementById("buyerEmail").value;
-
-    if (buyerName && buyerEmail) { // Kiểm tra nếu người dùng đã nhập thông tin
-        // Xử lý thông tin người mua ở đây (ví dụ: gửi dữ liệu thông tin người mua đến máy chủ)
-        alert("Thông tin người mua:\nTên: " + buyerName + "\nEmail: " + buyerEmail);
-    } else {
-        alert("Vui lòng nhập thông tin người mua.");
+    // tổng giá các sản phẩm trong giỏ hàng
+    let priceValue = 0;
+    const price = document.getElementsByClassName("price");
+    for(var i = 0; i <price.length; i++) {
+        priceValue = priceValue + parseFloat(price[i].textContent);
     }
-}
+    document.getElementById("priceValue").innerHTML = priceValue + "$";
+
+
+    //check all submit 
+    var shouldPreventDefault ;
+    // checkbox Carts 
+
+    function onclickCheckBox() {
+        checkedCount = $('input[name="carts[]"]:checked').length;
+    }
+
+    function renderCheckSubmitBtn() {
+        if(checkedCount > 0) {
+            containerFormCart.addEventListener("submit", function(event){
+                this.submit();
+            });   
+
+        }else{
+            alert('Vui lòng chọn sản phẩm');
+            containerFormCart.addEventListener("submit", function(event){
+                event.preventDefault();
+            });   
+        }
+    }
 </script>
