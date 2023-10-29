@@ -231,3 +231,110 @@ footer {
   top: 85px;
   left: 108px;
 }
+
+
+
+/*paied.ejs địa chỉ khi đặt hàng  */
+._8jJlG8 {
+  height: 170px;
+  padding: 20px 30px 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Jw2Sc {
+  display: inline-block;
+}
+/*paied.ejs mặc định */
+
+.vtrWey {
+  height: 3px;
+  width: 100%;
+  background-position-x: -30px;
+  background-size: 116px 3px;
+  background-image: repeating-linear-gradient(45deg,#6fa6d6,#6fa6d6 33px,transparent 0,transparent 41px,#f18d9b 0,#f18d9b 74px,transparent 0,transparent 82px);
+}
+.uk7Wpm {
+  width: 60px;
+  height: 25px;
+  padding: 2px 5px;
+  margin-left: 1.5em;
+  color: #ee4d2d;
+  border-radius: 1px;
+  border: 0.5px solid;
+  font-size: 10px;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+._3cPNXP{
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+/* paied địa chỉa tên số điện thoại  */
+.FVWWQy{
+  width: 180px;
+}
+
+button._3WkjWD.div-style {
+  color: #4080ee;
+  width: 90px;
+  border: 0;
+  text-transform: capitalize;
+  margin-left: 2.5rem;
+  cursor: pointer;
+}
+
+.OX-2Lj .div-style {
+  display: block;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+.kara-svg-icon {
+  width: 20px;
+  height: 25px;
+    margin:0 15px 4px 0;
+}
+
+.kara-svg-icon path{
+    fill: #ee4d2d;
+}
+
+.MqmqK4 {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  color: #ee4d2d;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  flex: 1 1 auto;
+}
+
+._3cPNXP, .V-sVj2 {
+  display: flex;
+  align-items: center;
+}
+.V-sVj2 {
+  width: 100%;
+  font-size: 14px;
+}
+._3cPNXP, .V-sVj2 {
+  display: flex;
+  align-items: center;
+}
+
+style attribute {
+  visibility: visible;
+}
+
+/* paied.ejs sản phẩm  */
+.ktatB-{
+  width: 50%;
+}
+
