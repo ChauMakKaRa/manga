@@ -23,7 +23,11 @@ const Admin = new Schema({
     type: String, 
     required: true
   },
-  
+  carts: {
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    quantity: {type: Number}
+  },
+  address: {type: String},
 });
 
 const User = mongoose.model('Admin', Admin);
