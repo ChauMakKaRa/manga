@@ -6,9 +6,11 @@ const routerAccount = require('./routes/accounts');
 const routerWeb = require('./routes/web');
 const routerContact = require('./routes/contact');
 const routerCart = require('./routes/cart');
+const routerPaied = require('./routes/paiedRouter');
+const routerAdmin = require('./routes/admin/adminRouter');
 
 const expressLayouts = require('express-ejs-layouts');
-
+const methodOverride = require('method-override');
 const session = require('express-session');
 const bodyParser = require('body-parser');
   
@@ -16,7 +18,7 @@ const app = express();
 const port = process.env.port || 3002;
 const db = require('./config/db');
 
-
+app.use(methodOverride('_method'));
 
 app.use(expressLayouts);
 
@@ -35,7 +37,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie:{
-    expires:  600000
+    expires:  1800000
   }
 }));
 
@@ -43,12 +45,13 @@ app.use(session({
 app.use('/', routerContact);
 app.use('/', routerWeb);
 app.use('/', routerAccount);
-app.use('/', routerCart);
+app.use('/', routerCart);   
+app.use('/', routerPaied);
+app.use('/', routerAdmin)
 
 
-app.use(express.json())
-
+app.use(express.json());
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
