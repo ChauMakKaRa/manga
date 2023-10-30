@@ -8,6 +8,11 @@ const Admin = new Schema({
     type: String, 
     required: true
   },
+  
+  admin_role : {
+    type: String, 
+    required: true
+  },
   password : {
     type: String, 
     required: true
