@@ -1,0 +1,52 @@
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"> Tổng số người dùng</h5>
+                <p class="card-text"><%= soluong %></p>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Doanh thu /năm</h5>
+                <p class="card-text">$200,000</p>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Những đơn đặt hàng gần đây</h5>
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Tổng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i = 0; i < paieds.length; i++) { %>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><%= paieds[i].products[0].product_name %></td>
+                        <td>$<%= paieds[i].products[0].price %></td>
+                        <td><%= paieds[i].products[0].amount %></td>
+                        <td>$<%= paieds[i].products[0].price*paieds[i].products[0].amount %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

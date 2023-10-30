@@ -1,0 +1,111 @@
+<div class="container">
+    <h1>Admin User Management</h1>
+
+    <!-- User List -->
+    <div class="card mt-4">
+      <div class="card-header">
+        User List
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i = 0 ; i< users.length ; i++) { %> 
+            <tr>
+              <td class="stt"></td>
+              <td><%= users[i].name %></td>
+              <td><%= users[i].email %></td>
+              <td><%= users[i].admin_role %></td>
+              <td>
+                <a href="editUser?id=<%= users[i]._id %>" class="btn btn-primary">Edit</a>
+                <button 
+                  data-bs-toggle="modal" data-id="<%= users[i]._id %>" 
+                  data-bs-target="#deleteUser" class="btn btn-danger delete">
+                    Delete</button>
+              </td>
+            </tr>
+            <% } %>
+            <!-- Add more rows for each user -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Add User Form -->
+    <div class="card mt-4">
+      <div class="card-header">
+        Add User
+      </div>
+      <div class="card-body">
+        <form method="POST" action="addUser">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select class="form-control" name="role" id="role" required>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Add User</button>
+        </form>
+      </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa người dùng</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc chắn muốn xóa người dùng này không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">hủy</button>
+        <button id="xoa_bo" type="button" class="btn btn-danger">Xóa bỏ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="form-delete" method="POST" action=""></form>
+
+<script>
+  // số thứ tự
+  var valueStt = document.getElementsByClassName('stt');
+  for(var i = 0; i< valueStt.length; i++) {
+    valueStt[i].innerHTML = i + 1;
+  }
+
+  var delete_user = document.getElementById('deleteUser');
+  var form_delete = document.forms['form-delete'];
+  var btn_delete = document.getElementById('xoa_bo');
+  var id_user;
+
+  delete_user.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+    id_user = button.getAttribute('data-id')
+  })
+  btn_delete.onclick = function  () {
+      form_delete.action = 'deleteUser?id=' + id_user + '&_method=DELETE';
+      form_delete.submit();
+  }
+</script>
