@@ -8,6 +8,7 @@ const routerContact = require('./routes/contact');
 const routerCart = require('./routes/cart');
 const routerPaied = require('./routes/paiedRouter');
 const routerAdmin = require('./routes/admin/adminRouter');
+const routerManageProduct = require('./routes/admin/managRouter');
 
 const expressLayouts = require('express-ejs-layouts');
 const methodOverride = require('method-override');
@@ -47,7 +48,8 @@ app.use('/', routerWeb);
 app.use('/', routerAccount);
 app.use('/', routerCart);   
 app.use('/', routerPaied);
-app.use('/', routerAdmin)
+app.use('/', routerAdmin);
+app.use('/', routerManageProduct);
 
 
 app.use(express.json());
