@@ -1,5 +1,6 @@
 const User = require('../../models/admin');
 const Product = require('../../models/product');
+const Paied = require('../../models/paied');
 const {mutipleMongsooseToObject} = require('../../until/mongoose');
 
 const homeAdmin = async (req, res, next) => {
@@ -45,10 +46,20 @@ const detailProduct = async(req, res, next) => {
         .catch(next);
 }
 const approveProduct = async (req, res, next) => {
-    res.render('admin/approve',{
-        session: req.session,
-    })
+    Paied.find({status: 'Chưa duyệt'})
+        .then(paieds => res.render('admin/approve',{
+            session: req.session,
+            paieds: paieds,
+        }))
+        .catch(next);
 }
+
+const deleteOrder = async(req, res, next) => {
+    Paied.deleteOne({_id: req.query.id}) 
+        .then(() => res.redirect('back'))
+        .catch(next);
+}
+
 module.exports = {
     homeAdmin, 
     addProduct,
@@ -56,4 +67,5 @@ module.exports = {
     deleteProduct,
     detailProduct,
     approveProduct,
+    deleteOrder,
 }

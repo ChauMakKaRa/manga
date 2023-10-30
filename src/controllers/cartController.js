@@ -56,7 +56,7 @@ const submitFormCarts = async(req, res, next) => {
                 amount: checkCarts[i].items[0].quantity,
             }),
             ordered: false,
-            status: 'Chờ duyệt',
+            status: 'Chưa duyệt',
         });
         paied.save();
     }
