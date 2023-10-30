@@ -1,37 +1,122 @@
-<div class="container">
-    <h1 class="mt-5">Trang duyệt đơn hàng</h1>
 
-    <table class="table mt-4">
-        <thead>
-            <tr>
-                <th scope="col">Mã đơn hàng</th>
-                <th scope="col">Tên khách hàng</th>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Số lượng</th>
-                <th scope="col">Tổng tiền</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Nguyễn Văn A</td>
-                <td>Sản phẩm A</td>
-                <td>10</td>
-                <td>1000</td>
-                <td>Chưa duyệt</td>
-                <td><a href="#" class="btn btn-primary">Xác nhận</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Nguyễn Thị B</td>
-                <td>Sản phẩm B</td>
-                <td>5</td>
-                <td>500</td>
-                <td>Đã duyệt</td>
-                <td><a href="#" class="btn btn-danger">Hủy</a></td>
-            </tr>
-        </tbody>
-    </table>
+<style>
+    .dropdown-toggle::after {
+      display: none;
+    }
+  </style>
+<div class="container">
+    <h1>Duyệt đơn hàng</h1>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Số thứ tự</th>
+                    <th>Thông tin khách hàng</th>
+                    <th>Thông tin sản phẩm</th>
+                    <th>Trang thái</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <form method="POST" action="duyet"></form>
+                <% for (var i = 0; i < paieds.length; i++) { %>
+                <tr class="order-row">
+                    <td class="stt"></td>
+                    <td >
+                        <p class=" dropdown-toggle"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <%= paieds[i].customer[0].name %>
+                        </p>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li class="dropdown-item" onclick="onOptionClick('Tùy chọn 1')">Địa chỉ: <%= paieds[i].customer[0].address %></li>
+                            <li class="dropdown-item" onclick="onOptionClick('Tùy chọn 2')">Số điện thoại: <%= paieds[i].customer[0].phone %>/li>
+                        </ul>   
+                    </td>
+                    <td>
+                        <p class=" dropdown-toggle"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <%= paieds[i].products[0].product_name %>
+                        </p>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li class="dropdown-item" onclick="onOptionClick('Tùy chọn 1')">Giá: <%= paieds[i].products[0].price %></li>
+                            <li class="dropdown-item" onclick="onOptionClick('Tùy chọn 2')">Số lượng: <%= paieds[i].products[0].amount %></li>
+                        </ul>   
+                    </td>
+                    <td>
+                        <%= paieds[i].status %>
+                    </td>
+                    <td>
+                        <a href="" name="duyet" data-bs-toggle="modal" data-id="<%= paieds[i]._id %>" data-bs-target="#duyetOrder" class="btn btn-primary ">Duyệt</a>
+                        <a href="" data-bs-toggle="modal" data-id="<%= paieds[i]._id %>" data-bs-target="#deleteOrder" class="btn btn-danger ">Xóa</a>
+                    </td>
+                </tr>
+                <% } %>
+                </form>
+            </tbody>    
+        </table>
+    </div>
 </div>
+
+<div class="modal fade" id="deleteOrder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Xóa đơn hàng này:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn bạn chắc chắn muốn xóa đơn hàng này không? 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+          <button id="btn-delete-order" type="button" class="btn btn-danger">Xóa bỏ</button>
+        </div>
+      </div>
+    </div>
+</div>
+<form name="form-approve-duyet" method="POST"></form>
+<form name="form-aprrove-xoa" method="POST"></form>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    var valueStt = document.getElementsByClassName('stt'); // lấy thẻ  chứa sọ thứ tự
+
+    var deleteOrder = document.getElementById('deleteOrder'); // lấy thẻ div có id = deleteOrder
+
+    var formApprove_duyet = document.forms['form-approve-duyet']; //form duyệt 
+    var formApprove_xoa = document.forms['form-aprrove-xoa']; // hủy hành động duyệt
+
+    var btnDeleteOrder = document.getElementById("btn-delete-order"); //btn chấp nhận xóa bỏ
+    var btnDuyet = document.getElementsByName("duyet");
+    var productId;
+
+    for(var i = 0; i< valueStt.length; i++) {
+        valueStt[i].innerHTML = i + 1;
+    }
+    function onOptionClick(option) {
+      document.getElementById("dropdownMenuButton").textContent = option;
+    }
+
+    // xóa đơn hàng không cần duyệt 
+    deleteOrder.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        productId = button.getAttribute('data-id');
+    });
+    btnDeleteOrder.onclick = function() {
+        formApprove_xoa.action = '/deleteOrder?id=' + productId  + '&_method=DELETE';
+        formApprove_xoa.submit();
+    }
+
+    //duyệt đơn hàng
+    var data_id;
+    
+    for(var i = 0 ; i < btnDuyet.length ; i++) {
+        data_id = btnDuyet[i].dataset.id;
+        btnDuyet[i].onclick = function() {
+            formApprove_duyet
+            formApprove_duyet.action = '/duyetOrder?id=' + data_id  + '&_method=PUT';
+            formApprove_duyet.submit();
+        };
+    }
+    
+
+</script>

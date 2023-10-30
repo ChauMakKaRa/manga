@@ -6,7 +6,7 @@ const {getCart,postCart,destroy,submitFormCarts,changeAddres, getPaied} = requir
 
 routerCart.get('/cart', getCart);
 routerCart.post('/add-to-cart', postCart);
-routerCart.post('/deleteCart', destroy);
+routerCart.delete('/deleteCart', destroy);
 routerCart.post('/handleFormCart', submitFormCarts)
 routerCart.put("/changeAddress", changeAddres);
 routerCart.get('/paied', getPaied);
