@@ -84,6 +84,7 @@ const getRegister = (req, res, next) => {
 
 const handleRegister = async(req, res, next) => {
     let user = new Admin({
+        admin_role: 'User',
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
