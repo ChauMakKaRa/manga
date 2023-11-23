@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (var i = 0; i < paieds.length; i++) { %>
+                    <% for (var i = 0; i < Math.min(paieds.length, 10); i++) { %>
                     <tr>
                         <th scope="row">1</th>
                         <td><%= paieds[i].products[0].product_name %></td>
@@ -50,3 +50,34 @@
         </div>
     </div>
 </div>
+
+
+<style>
+    /* Style the card titles */
+.card-title {
+  color: #4CAF50; /* Green color */
+  text-align: center; /* Center align text */
+}
+
+/* Style the card bodies */
+.card-body {
+  background-color: #f5f5f5; /* Light gray background */
+  border: 1px solid #ccc; /* Add a light gray border */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center align text */
+  padding: 15px; /* Add padding to the card body */
+  margin-bottom: 20px; /* Add margin at the bottom of each card */
+}
+
+/* Style the table headers */
+.table thead th {
+  background-color: #4CAF50; /* Green color */
+  color: white; /* White text color */
+}
+
+/* Style the alternating rows in the table */
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* A slightly darker shade of gray */
+}
+
+</style>

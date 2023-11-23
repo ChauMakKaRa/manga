@@ -7,3 +7,36 @@
     <li>Sản phẩm 4</li>
   </ul>
 </div>
+
+<style>
+  /* Định dạng phần danh mục sản phẩm */
+  .absolute {
+    position: absolute; /* Sử dụng vị trí tuyệt đối */
+  top: 100px; /* Cho phần danh mục cách mép trên 100px */
+  left: 50px; /* Cho phần danh mục cách mép trái 50px */
+  background-color: #f2f2f2; /* Màu nền xám nhạt */
+  padding: 20px; /* Khoảng cách lề bên trong */
+  border: 1px solid #ccc; /* Đường viền kẻ ô vuông */
+  border-radius: 5px; /* Bo tròn góc ô vuông */
+  z-index: 1; /* Đảm bảo phần danh mục hiển thị trên header */
+  overflow-y: hidden; /* Không cho phép cuộn theo chiều dọc */
+}
+/* Định dạng tiêu đề "Danh mục sản phẩm" */
+.absolute h3 {
+  color: #333; /* Màu chữ đen */
+  text-transform: uppercase; /* Chuyển đổi viết hoa */
+  margin-bottom: 10px; /* Khoảng cách dưới */
+}
+
+/* Định dạng danh sách sản phẩm */
+.absolute ul {
+  list-style-type: none; /* Bỏ danh sách dạng chấm */
+  padding: 0; /* Bỏ khoảng cách lề bên trong */
+}
+
+/* Định dạng từng sản phẩm trong danh sách */
+.absolute li {
+  margin-bottom: 5px; /* Khoảng cách dưới cho mỗi sản phẩm */
+}
+
+</style>

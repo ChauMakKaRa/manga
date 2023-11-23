@@ -8,7 +8,9 @@ const postContact = async(req, res, next) => {
     res.json(req.body);
 }
 
+
 module.exports = {
     postContact,
-    getContact
+    getContact,
+  
 }

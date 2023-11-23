@@ -1,15 +1,14 @@
 <div class="container-sm">
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
+          <a style="color: #fff;" class="navbar-brand" href="/">
             <img class="logo-shop" src="images/logocomic.png" alt="">
             Kara's Shop
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarScroll">
-
+          <div class="collapse navbar-collapse" id="navbarScroll" >
             <form class="d-flex me-auto form-search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
@@ -63,3 +62,36 @@
       </nav>
 </div>
 
+
+
+<style>
+  /* Màu nền cho header */
+.navbar {
+  background-color: #4CAF50; /* Màu xanh lá cây */
+}
+
+/* Thay đổi màu chữ cho navbar link và navbar dropdown */
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-toggle {
+  color: white !important; /* Màu chữ màu trắng */
+}
+
+/* Thay đổi màu chữ khi hover vào navbar link */
+.navbar-nav .nav-link:hover {
+  color: #f8b400; /* Màu cam */
+}
+
+/* Đổi màu khung input search */
+.form-search input {
+  background-color: #f2f2f2;
+  height: 50px; /* Màu xám nhạt */
+}
+
+/* Đổi màu nút search */
+.form-search button {
+  background-color: #f8b400; /* Màu cam */
+  color: white;
+  height: 50px;
+}
+
+</style>

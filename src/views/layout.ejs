@@ -12,7 +12,7 @@
 </head>
 <body>
     
-    <% if (session.name != 'admin' || !session) { %>
+    <% if (session.role != 'Admin' || !session) { %>
         <div class="header-absolute">
             <%- include('./partials/header.ejs') %>
         </div>
@@ -22,24 +22,29 @@
         </div>
     <% } %> 
    
-    <div class="container">
+    <div class="container main">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-3 category">
                 <%- include('./partials/category.ejs') %>
             </div>
-            <div class="col-sm-9">
-                <div class="body">
+            <div class="col-sm-9 ">
+                <div class=" body">
                     <%- body%>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- <footer>
-        <%- include('./partials/footer.ejs') %>
-    </footer> -->
+    <%- include('./partials/footer.ejs') %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
+
+<style>
+  .main{
+    min-height: 100vh;
+  }
+    
+</style>

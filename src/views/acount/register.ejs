@@ -1,4 +1,4 @@
-<div class="body-account">
+<div class="body-account" style="margin-top: 150px;">
   <div class="wrapper">
     <form method="POST" action="/handleRegister">
       <h1>Đăng ký</h1>
@@ -35,10 +35,83 @@
       <button type="submit" class="btn">Đăng ký</button>
   
       <div class="register-link">
-        <p>You have an account?
-          <a href="/login">Đăng nhập</a>
+        <p style="color: #45a049;">You have an account?
+          <a style="color: #4CAF50;" href="/login">Đăng nhập</a>
         </p>
       </div>
     </form>
   </div>
 </div>
+
+<style>
+  .input-box input::placeholder {
+    color: #45a049; /* Màu xám nhạt cho chữ placeholder */
+}
+  /* Định dạng wrapper và form */
+.body-account .wrapper {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #f9f9f9; /* Màu nền xám nhạt */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.body-account form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Định dạng tiêu đề "Đăng ký" */
+.body-account h1 {
+  text-align: center;
+  color: #4CAF50; /* Màu xanh lá cây */
+  margin-bottom: 20px;
+}
+
+/* Định dạng thông báo lỗi */
+.error-message {
+  text-align: center;
+  margin-bottom: 20px;
+  color: red; /* Màu đỏ cho thông báo lỗi */
+}
+
+/* Định dạng input box */
+.input-box {
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Định dạng nút đăng ký */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #44d049; /* Màu xanh lá cây cho nút */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #1FADFF, #12fbbd, #b0fda7);
+}
+
+/* Định dạng đường dẫn đăng nhập */
+.register-link {
+  text-align: center;
+}
+
+.register-link a {
+  color: #4CAF50; /* Màu xanh lá cây cho đường dẫn Đăng nhập */
+  text-decoration: none;
+}
+
+</style>

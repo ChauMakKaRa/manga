@@ -1,6 +1,7 @@
 const User = require('../../models/admin');
 const Product = require('../../models/product');
 const Paied = require('../../models/paied');
+const Shipper = require('../../models/shipments');
 const {mutipleMongsooseToObject} = require('../../until/mongoose');
 
 const homeAdmin = async (req, res, next) => {
@@ -60,6 +61,21 @@ const deleteOrder = async(req, res, next) => {
         .catch(next);
 }
 
+const pageDonHang = async (req, res, next) => {
+    Shipper.find({})
+        .then((shipments, peieds) => res.render('admin/don_hang',{
+            session: req.session,
+            shipments: shipments,
+            peieds: peieds,
+        }))
+        .catch(next);
+}
+
+const deleteDelivered = async(req, res, next) => {
+    Shipper.deleteOne({_id: req.query.id})
+        .then(() => res.redirect('back'))
+        .catch(next);
+}
 module.exports = {
     homeAdmin, 
     addProduct,
@@ -68,4 +84,6 @@ module.exports = {
     detailProduct,
     approveProduct,
     deleteOrder,
+    pageDonHang,
+    deleteDelivered,
 }

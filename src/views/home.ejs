@@ -43,20 +43,16 @@
         <div class="boxsp card card-product-item">
           <img src="<%= products[i].product_image %>" class="card-img-top" alt="Product Image" style="width: 100%; height: 300px;">          <div class="card-body">
             <h5 class="card-title">
-              <%= products[i].product_name %>
+              <a href="/viewport?id=<%= products[i]._id %>" class="navbar-brand" style="color: black;"><%= products[i].product_name %></a>
             </h5>
             <div class="card-text">
               Price: $<%= products[i].product_price %>
             </div>
             <div class="row mt-1 align-items-center">
-              <div class="col-5">
-                <a href="#?<%= products[i]._id %>" class="btn btn-primary center">
-                  Mua
-                </a>
-              </div>
-              <div class="col-7 text-right">
+              
+              <div class="text-right">
                 <button onclick="themvaogiohang(this)" class="cart btn btn-primary" type="submit">
-                  Thêm <i class="fas fa-shopping-cart ml-1"></i>
+                  Thêm vào giỏ hàng <i class="fas fa-shopping-cart ml-1"></i>
                 </button>
               </div>
             </div>
@@ -69,3 +65,56 @@
 <form action="" method="POST"></form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
+<style>
+  /* Định dạng tiêu đề "Danh sách sản phẩm" */
+h4 {
+  color: #4CAF50; /* Màu xanh lá cây */
+  text-align: center; /* Căn giữa */
+  margin-top: 20px; /* Khoảng cách phía trên */
+}
+
+/* Định dạng khung chứa card sản phẩm */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Định dạng khung card sản phẩm */
+.card-product-item {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #e6e6e6; /* Màu viền */
+  border-radius: 5px; /* Bo tròn góc */
+  background-color: #f5f5f5; /* Màu nền */
+}
+
+/* Định dạng tiêu đề của card */
+.card-title a {
+  color: #333; /* Màu chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+/* Định dạng giá của sản phẩm */
+.card-text {
+  color: #666; /* Màu chữ */
+}
+
+/* Định dạng nút "Mua" */
+.btn-primary {
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+  margin: 10px; /* Khoảng cách */
+  text-align: center; /* Căn giữa */
+  padding: 8px 20px; /* Độ rộng và chiều cao của nút */
+}
+
+/* Định dạng nút "Thêm vào giỏ hàng" */
+.cart {
+  background-color: #FF6347; /* Màu nền đỏ */
+  color: white; /* Màu chữ trắng */
+  border: none; /* Không có viền */
+  padding: 8px 20px; /* Độ rộng và chiều cao của nút */
+}
+
+</style>

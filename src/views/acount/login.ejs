@@ -1,8 +1,7 @@
-<div class="body-account">
+<div class="body-account" style="margin-top: 155px;">
   <div class="wrapper">
     <form method="POST" action="handleLogin">
       <h1>Đăng Nhập</h1>
-
       <div class="error-login">
         <% if (error) { %>
           <p><%= error %></p>
@@ -15,15 +14,12 @@
       </div>
       <div class="input-box">
         <input type="text" placeholder="Vui lòng nhập Mail" 
-         class="form-control" id="email"  name="email" />
-        
+         class="form-control" id="email"  name="email"  required/>
       </div>
-
       <div class="input-box">
         <input type="password" placeholder="Vui lòng mật khẩu" 
-        class="form-control" id="password" name="password"/>
+        class="form-control" id="password" name="password" required/>
       </div>
-  
       <div class="remember-forgot">
         <label for="">
           <input type="checkbox">
@@ -31,19 +27,111 @@
         </label>
         <a href="#">Forgot password?</a>
       </div>
-  
       <button type="submit" class="btn">Đăng nhập</button>
-  
       <div class="register-link">
-        <p>Don't have an account?
-          <a href="/register">Đăng ký</a>
+        <p style="color: #45a049;">Don't have an account?
+          <a style="color: #4CAF50;" href="/register">Đăng ký</a>
         </p>
       </div>
     </form>
-
-  
   </div>
 </div>
 
  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<style>
+  /* Định dạng wrapper và form */
+.body-account .wrapper {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #fff; /* Màu nền xám nhạt */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.body-account form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Định dạng tiêu đề "Đăng Nhập" */
+.body-account h1 {
+  text-align: center;
+  color: #4CAF50; /* Màu xanh lá cây */
+  margin-bottom: 20px;
+}
+
+/* Định dạng thông báo lỗi và thông báo thành công */
+.error-login,
+.message-login {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.error-login p,
+.message-login p {
+  color: red; /* Màu đỏ cho thông báo lỗi */
+}
+
+/* Định dạng input box */
+.input-box {
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  color: #45a049;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Định dạng remember-forgot và nút đăng nhập */
+.remember-forgot {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.remember-forgot label {
+  margin-right: 10px;
+  color: #45a049;
+}
+
+.remember-forgot a {
+  color: #4CAF50; /* Màu xanh lá cây cho đường dẫn Forgot password */
+  text-decoration: none;
+}
+
+/* Định dạng nút đăng nhập */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #4CAF50; /* Màu xanh lá cây cho nút */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #1FADFF, #12DAFB, #A7FDCC);
+}
+
+/* Định dạng đường dẫn Đăng ký */
+.register-link {
+  text-align: center;
+}
+
+.register-link a {
+  color: #4CAF50; /* Màu xanh lá cây cho đường dẫn Đăng ký */
+  text-decoration: none;
+}
+
+.input-box input::placeholder {
+  color: #4CAF50; /* Màu xám nhạt cho chữ placeholder */
+}
+
+</style>

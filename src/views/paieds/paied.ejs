@@ -1,30 +1,5 @@
-<style>
-    table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .total-row td {
-            font-weight: bold;
-        }
-        .checkout-button {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            border: 0px;
-        }
-</style>
-<div>
+
+<div class="mt-5">
     <div class="vtrWey"></div>
     <div class="_8jJlG8">
         <div class="nU2ylc">
@@ -71,9 +46,7 @@
                                 <%= paieds[i].products[0].product_name %>
                             </td>
                             <td>
-                                <!-- <button class="btn btn-secondarys" onclick="subtractQuantity()">-</button> -->
                                 <span id="quantity" class="quantitys">1</span>
-                                <!-- <button class="btn btn-secondarys" onclick="addQuantity()">+</button> -->
                             </td>
                             <td>
                                 <%= paieds[i].products[0].price %>$
@@ -81,15 +54,13 @@
                             <td class="price text-center">
                                 <%= paieds[i].products[0].price*paieds[i].products[0].amount %>$
                             </td>
-                            
-        
                         </tr>
                     <% } %>
                 </table>
             </div>
         </div>  
     
-        <div class="mt-4 " style="background-color: antiquewhite;">
+        <div class="mt-4 ">
             <div class="row">
                 <div class="col-sm-8"></div>
                 <div class="col-sm-3">Tổng tiền hàng</div>
@@ -115,6 +86,7 @@
                     <button type="submit" class="btn btn-primary" onclick="submitBtnPaieds()" style="width: 100%;"><b>Đặt hàng</b></button>
                 </div>
             </div>
+        </div>
     </form>
 </div>
 
@@ -176,7 +148,83 @@
             });   
         }
     }
-
-
-    
 </script>
+
+<style>
+    /* Định dạng tiêu đề */
+h2 {
+    text-align: center;
+    color: #4CAF50; /* màu xanh lá cây */
+}
+
+/* Định dạng bảng sản phẩm */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #4CAF50; /* màu xanh lá cây */
+}
+
+.total-row td {
+    font-weight: bold;
+    color: #4CAF50; /* màu xanh lá cây */
+}
+
+/* Định dạng nút thanh toán */
+.checkout-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #4CAF50; /* màu xanh lá cây */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 0;
+}
+/* Tổng tiền hàng, Phí vận chuyển, and Tổng thanh toán */
+.row {
+    margin-bottom: 10px;
+}
+
+/* Tổng tiền hàng */
+#tien-don-hang {
+    color: #4CAF50;  /* Green color */
+    font-weight: bold;
+}
+
+/* Phí vận chuyển */
+#tien-giao-hang {
+    color: #4CAF50;  /* Green color */
+    font-weight: bold;
+}
+
+/* Tổng thanh toán */
+#tong-tien {
+    color: #FF1C1C;  /* Red color */
+    font-weight: bold;
+}
+
+/* 'Đặt hàng' button */
+button[type="submit"] {
+    background-color: #4CAF50;  /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Anchor link within 'Nhấn "Đặt hàng" đồng nghĩa...' */
+a {
+    color: #4CAF50;  /* Green color */
+    text-decoration: none;
+}
+
+</style>

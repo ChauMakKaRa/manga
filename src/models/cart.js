@@ -10,8 +10,13 @@ const cartSchema = new mongoose.Schema({
       quantity: {type: Number}
     }],
     total: {type: Number},
+    username: {
+      type: String, 
+      require: true,
+    }
     // Thêm các trường thông tin khác của cart nếu cần
   });
+
   
 const Cart = mongoose.model('Cart', cartSchema);
 module.exports = Cart;

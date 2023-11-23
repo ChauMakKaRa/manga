@@ -1,0 +1,85 @@
+<div class="container">
+    <h1>Trang Quản lý</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Mã đơn hàng</th>
+                <th scope="col">Tên khách hảng</th>
+                <th scope="col">Xác nhận</th>
+                <th scope="col"  >Trạng thái giao hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var i = 0; i < shipments.length; i++) { %>
+            <tr>
+                <td><%= shipments[i]._id %></td>
+                <td>tên</td>
+                <td>đã gửi</td>
+                <td class="text-center">
+                    <% if(shipments[i].delivered) { %> 
+                        Đã giao thành công
+                    <button  class="btn btn-primary" onclick="deleteDelivered('<%= shipments[i]._id %>')">Xóa</button>  
+                    <button class="btn btn-primary" onclick="sendConfirmation('<%= shipments[i].user_id[0]._id %>')">Gửi xác nhận</button>
+                    <% } else if(shipments[i].returned) { %>
+                        Đơn hàng đã trả về 
+                    <% } else { %>
+                        Đang giao
+                    <% } %>
+                    
+                </td>
+
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<form name="xoa-don-hang-da-giao" method="POST" ></form>
+<form name="gui-thong-bao-xac-nhan" method="POST"></form>
+
+<script>
+    var formDelete = document.forms['xoa-don-hang-da-giao'];
+    var formConfirmation = document.forms['gui-thong-bao-xac-nhan'];
+    function deleteDelivered(index) {
+        formDelete.action = "/xoa-don-hang-da-giao?id=" + index + "&_method=DELETE";
+        formDelete.submit();
+    }
+    function sendConfirmation(user_id) {
+        formConfirmation.action = "/send-confirm-email?id=" + user_id;
+        formConfirmation.submit();
+    }
+    
+</script>
+
+<style>
+    /* Định dạng tiêu đề trang */
+h1 {
+  color: #4CAF50; /* Màu xanh lá cây */
+  text-align: center; /* Canh giữa */
+}
+
+/* Định dạng màu chữ cho header của bảng */
+.table thead th {
+  color: white; /* Màu chữ trắng */
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+}
+
+/* Định dạng background và màu chữ cho các dòng sản phẩm trong bảng */
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Màu nền xám nhạt cho các dòng chẵn */
+}
+
+/* Định dạng màu chữ cho các nút trong cột "Trạng thái giao hàng" */
+.table tbody td button {
+  color: white; /* Màu chữ trắng */
+}
+
+/* Định dạng background và màu chữ cho các nút xóa và gửi xác nhận */
+.btn-primary {
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+  margin: 5px; /* Khoảng cách giữa các nút */
+}
+
+</style>

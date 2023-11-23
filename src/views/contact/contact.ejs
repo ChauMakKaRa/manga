@@ -1,33 +1,5 @@
 <style>
-    h2 {
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .submit-button {
-            display: block;
-            width: 150px;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+   
 </style>
 <div class="container">
 <h2>Liên hệ</h2>
@@ -44,7 +16,7 @@
         <label for="message">Nội dung:</label>
         <textarea id="message" name="message" rows="5" required></textarea>
     </div>
-    <button class="submit-button">Gử<i></i></button>
+    <button class="submit-button">Gửi<i></i></button>
 </form>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
@@ -63,3 +35,46 @@ function addQuantity() {
   document.getElementById("quantity").innerHTML = quantity;
 }
 </script>
+
+<style>
+    /* Định dạng tiêu đề trang */
+h2 {
+  text-align: center;
+  color: #4CAF50; /* Màu xanh lá cây */
+  padding-top: 20px; /* Khoảng cách từ đỉnh trang */
+}
+
+/* Định dạng các form group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #4CAF50; /* Màu xanh lá cây */
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Định dạng nút submit */
+.submit-button {
+  display: block;
+  width: 150px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+</style>

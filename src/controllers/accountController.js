@@ -1,6 +1,7 @@
 
 const Admin = require('../models/admin');
 const tableProduct = require('../models/product');
+const Shipper = require('../models/shipments');
 const bcrypt = require('bcryptjs');
 const {mutipleMongsooseToObject} = require('../until/mongoose');
 
@@ -17,11 +18,13 @@ const getLogin = (req, res, next) => {
 }
     
 const handleLogin = async(req, res, next) => {
-    const check = await Admin.findOne({email: req.body.email})
-    if (req.body.email == 'admin@gmail.com') {
+    const shippers = await Shipper.find({});
+    const check = await Admin.findOne({email: req.body.email});
+    if (check.admin_role == 'Admin' || check.admin_role == 'admin') {
         try{
             if(check.password === req.body.password) {
                 req.session.name = check.name;
+                req.session.role = check.admin_role,
                 req.session.image = check.image;
                 const products = 
                 await tableProduct.find({})
@@ -44,7 +47,7 @@ const handleLogin = async(req, res, next) => {
                 session: '',
             });
         }
-    }else{
+    }else if(check.admin_role == 'user'){
         try{
             if(check.password === req.body.password) {
                 req.session.name = check.name;
@@ -54,6 +57,33 @@ const handleLogin = async(req, res, next) => {
                     .then(products => res.render('home',{
                         products: mutipleMongsooseToObject(products),
                         session: req.session
+                    }))
+                    .catch(error => next(error));
+            }else{
+                res.render('acount/login', { 
+                    error: 'Sai thông tin mật khẩu.' ,
+                    message,
+                    session: req.session
+                });
+            }
+        }catch{
+            res.render('acount/login', { 
+                error: 'Sai thông tin tài khoản.',
+                message,
+                session: req.session
+            });
+        }
+    }else{
+        try{
+            if(check.password === req.body.password) {
+                req.session.name = check.name;
+                req.session.image = check.image;
+                const products = 
+                await tableProduct.find({})
+                    .then(products => res.render('shipper/home',{
+                        products: mutipleMongsooseToObject(products),
+                        session: req.session,
+                        shippers: shippers,
                     }))
                     .catch(error => next(error));
             }else{

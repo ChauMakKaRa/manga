@@ -1,0 +1,82 @@
+<div class="container">
+    <h1>Danh sách hàng hóa</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Mã đơn hàng</th>
+                <th>Trạng thái</th>
+                <th class="text-center">Hành động</th>
+            </tr>
+        </thead>
+        <tbody >
+            <% var i = 0; for ( i = 0; i < shippers.length; i++) { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= shippers[i]._id %></td>
+                    <td>
+                        <% if (shippers[i].delivered) { %>
+                            Đã giao thành công
+                        <% } else if (shippers[i].returned) { %>
+                            Đã trả về
+                        <% } else { %>
+                            Đang giao
+                        <% } %>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-primary" onclick="markDelivered('<%= shippers[i]._id %>')">Đã giao</button>     
+                        <button class="btn btn-danger" onclick="markReturned('<%= shippers[i]._id %>')">Trả hàng</button>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<form name="delivered-form" method="POST"></form>
+<form name="returned-form" method="POST"></form>
+<script>
+    var deliveredForm = document.forms['delivered-form'];
+    var deliveredForm = document.forms['returned-form'];
+    function markDelivered(index) {
+        deliveredForm.action = "/delivered?id=" + index + "&_method=PUT";
+        deliveredForm.submit();
+    }
+
+    function markReturned(index) {
+        deliveredForm.action = "/returned?id=" + index + "&_method=PUT";
+        deliveredForm.submit();
+    }
+</script>
+
+<style>
+    /* Định dạng tiêu đề */
+h1 {
+  color: #4CAF50; /* Màu xanh lá cây */
+  text-align: center; /* Canh giữa */
+  margin-bottom: 20px; /* Khoảng cách phía dưới */
+}
+
+/* Định dạng tiêu đề cột trong bảng */
+.table th {
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+}
+
+/* Định dạng màu chữ cho trạng thái hàng hóa */
+.table td {
+  color: #1E90FF; /* Màu xanh dương */
+}
+
+/* Định dạng màu nền và chữ cho các nút */
+.btn-primary {
+  background-color: #4CAF50; /* Màu nền xanh lá cây cho nút primary */
+  color: white; /* Màu chữ trắng cho nút primary */
+  margin-right: 5px; /* Khoảng cách bên phải */
+}
+
+.btn-danger {
+  background-color: #FF6347; /* Màu nền đỏ cho nút danger */
+  color: white; /* Màu chữ trắng cho nút danger */
+}
+
+</style>

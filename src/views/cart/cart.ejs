@@ -1,33 +1,4 @@
-<style>
-    
-        h2 {
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .total-row td {
-            font-weight: bold;
-        }
-        .checkout-button {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            border: 0px;
-        }
-</style>
+
 <form class="container" name="container-form-cart" method="POST" action="/handleFormCart?name=<%= session.name %>" >
     <h2>Giỏ hàng</h2>
         <table>
@@ -178,3 +149,44 @@
         }
     }
 </script>
+
+<style>
+  /* Định dạng tiêu đề "Giỏ hàng" */
+h2 {
+    color: #4CAF50; /* Màu xanh lá cây */
+    text-align: center; /* Căn giữa */
+    margin-bottom: 20px; /* Khoảng cách phía dưới */
+}
+
+/* Định dạng bảng sản phẩm */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Màu viền */
+}
+
+.total-row td {
+    font-weight: bold; /* In đậm cho dòng tổng tiền */
+}
+
+/* Định dạng nút thanh toán */
+.checkout-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #4CAF50; /* Màu nền xanh lá cây */
+    color: white; /* Màu chữ trắng */
+    text-align: center; /* Căn giữa */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    border-radius: 5px; /* Bo tròn góc */
+    border: 0; /* Không viền */
+}
+
+
+</style>

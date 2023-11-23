@@ -9,7 +9,7 @@ const so_luong = 1;
 
 const getCart = async(req, res, next) => {
     const carts = 
-    await Cart.find({})
+    await Cart.find({username: req.session.name})
         .then(carts => res.render('cart/cart',{
             carts: mutipleMongsooseToObject(carts),
             session: req.session,
@@ -26,7 +26,8 @@ const postCart = async(req, res, next) => {
             quantity: so_luong,
         }],
        
-        total: check.product_quantity
+        total: check.product_quantity,
+        username: req.session.name,
     });
     cart.save();
     

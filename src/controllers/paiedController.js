@@ -1,7 +1,7 @@
 const Paied = require('../models/paied');
 
 const getOrdered = async (req, res, next) => {
-    Paied.find({ordered : true})
+    Paied.find({ordered : true, "customer.name": req.session.name})
         .then(ordereds => res.render('cart/ordered', {
             ordereds: ordereds,
             session: req.session,

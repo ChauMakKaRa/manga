@@ -16,9 +16,17 @@ const getHello = (req, res) => {
     res.render('sample',{session: req.session.user})
 }
 
-
+const viewport = async(req, res, next) =>{
+    tableProduct.findById({_id: req.query.id})
+        .then(product => res.render('product/viewport',{
+            session: req.session,
+            product: product
+        }))
+        .catch(next);
+}
 
 module.exports = {
     getHello, 
     getHomeController, 
+    viewport,
 }
