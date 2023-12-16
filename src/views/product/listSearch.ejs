@@ -1,0 +1,82 @@
+<h2 class="mt-4 text-center">Danh sách sản phẩm</h2>
+    <% if(products.length != 0) { %> 
+      <div class="card-container">
+      <% for (var i = 0; i < products.length; i++) { %>
+        <form action="/add-to-cart?id=<%= products[i]._id %>" method="POST">
+        <div class="boxsp card card-product-item">
+          <img src="<%= products[i].product_image %>" class="card-img-top" alt="Product Image" style="width: 100%; height: 300px;">          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/viewport?id=<%= products[i]._id %>" class="navbar-brand" style="color: black;"><%= products[i].product_name %></a>
+            </h5>
+            <div class="card-text">
+              Price: $<%= products[i].product_price %>
+            </div>
+            <div class="row mt-1 align-items-center">
+              
+              <div class="text-right">
+                <button class="cart btn btn-primary" type="submit">
+                  Thêm vào giỏ hàng <i class="fas fa-shopping-cart ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>  
+        </div>
+    </form>
+    <% } %>
+  </div>
+  <% }else{ %>
+    <h4 class="mt-5 m-2">Không tìm thấy sản phẩm với từ khóa của bạn!!</h4>
+    <% } %>
+  <style>
+h2 {
+      color: #4CAF50; /* Màu xanh lá cây */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Đổ bóng văn bản */
+      transition: color 0.3s ease-in-out; /* Hiệu ứng màu sắc */
+    }
+
+    h2:hover {
+      color: #FF5722; /* Màu cam khi di chuột qua */
+    }
+.container{
+  padding-top: 10px;
+}
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-product-item {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #e6e6e6; /* Màu viền */
+  border-radius: 5px; /* Bo tròn góc */
+  background-color: #f5f5f5; /* Màu nền */
+}
+
+.card-title a {
+  color: #333; /* Màu chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.card-text {
+  color: #666; /* Màu chữ */
+}
+
+.btn-primary {
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+  margin: 10px; /* Khoảng cách */
+  text-align: center; /* Căn giữa */
+  padding: 8px 20px; /* Độ rộng và chiều cao của nút */
+}
+
+.cart {
+  background-color: #FF6347; /* Màu nền đỏ */
+  color: white; /* Màu chữ trắng */
+  border: none; /* Không có viền */
+  padding: 8px 20px; /* Độ rộng và chiều cao của nút */
+}
+  </style>

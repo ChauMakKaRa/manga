@@ -1,0 +1,56 @@
+
+    <div class="container">
+        <h1>Danh sách liên hệ</h1>
+        <% if(contacts.length == 0) { %>
+            <h4>Không có liên hệ nào!!</h4>
+            <% }else{ %>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Message</th>
+                    <th scope="col"></th>
+                </tr>
+        </thead>
+        <tbody>
+                <% contacts.forEach((contact) => { %>
+                <tr>
+                    <td><%= contact.email %></td>
+                    <td><%= contact.name %></td>
+                    <td><%= contact.content %></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteContact('<%= contact._id %>')">Xóa</button>
+                    </td>
+                </tr>
+            <% }); %>
+            </tbody>
+        </table>
+        <% } %>
+    </div>
+
+<form name="deleteContactForm" method="POST" action=""></form>
+
+<script>
+    var formDeleteContact = document.forms['deleteContactForm'];
+    console.log(formDeleteContact);
+    function deleteContact(index) {
+        formDeleteContact.action = "/lien_he_admin?id=" + index + "&_method=DELETE";
+        formDeleteContact.submit();
+    }
+</script>
+
+<style>
+  
+    h1 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: red;
+        
+    }
+
+    h1:hover {
+      color: #22ff59; /* Màu cam khi di chuột qua */
+    }
+
+</style>

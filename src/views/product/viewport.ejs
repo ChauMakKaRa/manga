@@ -2,24 +2,37 @@
 
   <section class="product-details mt-5">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <img src="<%= product.product_image %>" alt="Product Image" class="img-fluid">
-        </div>
-        <div class="col-lg-6">
-          <h2 class="mb-4">Product Name</h2>
-          <p class="mb-4">Product Description</p>
-          <h4 class="mb-4">Price: $99.99</h4>
-          <div class="mb-4">
-            <h5>Product Details</h5>
-            <ul>
-              <li>Brand: Brand Name</li>
-              <li>Category: Category Name</li>
-              <li>Rating: 4.5/5</li>
-            </ul>
+      <form action="/add-to-cart?id=<%= product._id %>" method="POST">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="<%= product.product_image %>" alt="Product Image" class="img-fluid">
           </div>
-          <button class="btn btn-primary">Add to Cart</button>
+          <div class="col-lg-6">
+            <h2 class="mb-4"><strong><%= product.product_name %></strong></h2>
+            <p class="mb-4">Product Description</p>
+            <h4 class="mb-4">Price: $<%= product.product_price %>.00</h4>
+            <div class="mb-4">
+              <h5>Product Details</h5>
+              <ul>
+                <li>Tác giả: <%= product.brand_id %></li>
+                <li>Thể loại: Anime</li>
+                <li>Rating: 4.5/5</li>
+                <li>Nội dung: <%= product.product_content %></li>
+              </ul>
+            </div>
+            <button onclick="themvaogiohang(this)" class="cart btn btn-primary"  type="submit">Thêm vào giỏ hàng</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </section>
+  <form action="" method="POST"></form>
+
+  <style>
+    img {
+    width: 400px;
+  height: auto;
+  margin-left: 20%;
+}
+  </style>

@@ -1,17 +1,29 @@
 <div class="absolute">
-    <h3>Danh mục sản phẩm</h3>
+    <h3>Hàng hóa</h3>
   <ul>
-    <li>Sản phẩm 1</li>
-    <li>Sản phẩm 2</li>
-    <li>Sản phẩm 3</li>
-    <li>Sản phẩm 4</li>
+    <li >
+      <a class="danh-muc" href="/Commodities">Tìm kiếm</a>
+    </li>
+    <li>
+      <a class="danh-muc" href="">Hàng hóa</a>
+    </li>
+    <li>
+      <a class="danh-muc" href="">Hàng hóa</a>
+    </li>
+    <li>
+      <a class="danh-muc" href="">Hàng hóa</a>
+    </li>
+    <li class="bottom text-center">
+      <a href="/login">Đăng xuất</a>
+      <i class="fas fa-sign-out-alt"></i>
+    </li>
   </ul>
+
 </div>
 
 <style>
   /* Định dạng phần danh mục sản phẩm */
   .absolute {
-    position: absolute; /* Sử dụng vị trí tuyệt đối */
   top: 100px; /* Cho phần danh mục cách mép trên 100px */
   left: 50px; /* Cho phần danh mục cách mép trái 50px */
   background-color: #f2f2f2; /* Màu nền xám nhạt */
@@ -20,6 +32,8 @@
   border-radius: 5px; /* Bo tròn góc ô vuông */
   z-index: 1; /* Đảm bảo phần danh mục hiển thị trên header */
   overflow-y: hidden; /* Không cho phép cuộn theo chiều dọc */
+  width: 23%;
+  height: 80%;
 }
 /* Định dạng tiêu đề "Danh mục sản phẩm" */
 .absolute h3 {
@@ -28,15 +42,61 @@
   margin-bottom: 10px; /* Khoảng cách dưới */
 }
 
-/* Định dạng danh sách sản phẩm */
-.absolute ul {
-  list-style-type: none; /* Bỏ danh sách dạng chấm */
-  padding: 0; /* Bỏ khoảng cách lề bên trong */
-}
-
 /* Định dạng từng sản phẩm trong danh sách */
 .absolute li {
-  margin-bottom: 5px; /* Khoảng cách dưới cho mỗi sản phẩm */
+  margin-bottom: 10px; /* Khoảng cách dưới cho mỗi sản phẩm */
+}
+.bottom{
+  margin-top: 230px;
 }
 
+.absolute ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.absolute ul li {
+  padding: 10px;
+  transition: all 0.3s ease; /* Hiệu ứng di chuột */
+  font-family: Arial, sans-serif; /* Font chữ */
+}
+
+.absolute ul li:nth-child(even) {
+  background-color: #ebebeb; /* Màu nền cho thẻ chẵn */
+}
+
+.absolute ul li:nth-child(odd) {
+  background-color: #fafafa; /* Màu nền cho thẻ lẻ */
+}
+
+.absolute ul li:hover {
+  background-color: #d3d3d3; /* Hiệu ứng màu nền khi di chuột qua mục */
+}
+
+/* Tùy chỉnh màu sắc */
+.absolute ul li.bottom a {
+  text-decoration: none;
+  color: #FF0000; /* Màu cho đường link "Đăng xuất" */
+  transition: color 0.3s; /* Hiệu ứng màu khi di chuột qua */
+}
+
+.absolute ul li.bottom a:hover {
+  color: #0000FF; /* Hiệu ứng màu khi di chuột qua */
+}
+
+.absolute ul li.bottom a i {
+  margin-left: 20px; /* Khoảng cách giữa văn bản và biểu tượng */
+  color: #008000; /* Màu cho biểu tượng */
+  transition: color 0.3s; /* Hiệu ứng màu khi di chuột qua */
+}
+
+.absolute ul li.bottom a:hover i {
+  color: #FFA500; /* Hiệu ứng màu khi di chuột qua */
+}
+
+.danh-muc{
+  text-decoration: none;
+  color: #000000; /* Màu cho đường link "Đăng xuất" */
+  transition: color 0.3s; 
+}
 </style>

@@ -7,7 +7,7 @@ const {
         viewport,
     } = require('../controllers/homeController');
 
-const {getProductController,} = require('../controllers/productController');
+const {getProductController,getSearch} = require('../controllers/productController');
 const {pageShiper, Delivered, Returned, sendConfirmEmail, getConfirm} = require('../controllers/shipperController');
 
 router.get('/', getHomeController);
@@ -20,4 +20,5 @@ router.put('/delivered', Delivered);
 router.put('/returned', Returned);
 router.post('/send-confirm-email', sendConfirmEmail);
 router.get('/send-confirm-email', getConfirm);
+router.route('/search').get(getSearch).post(getSearch);
 module.exports = router;

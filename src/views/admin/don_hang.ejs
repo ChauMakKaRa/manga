@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Trang Quản lý</h1>
+    <h1 class="text-center" >Trang Quản lý</h1>
     
     <table class="table">
         <thead>
@@ -14,13 +14,13 @@
             <% for (var i = 0; i < shipments.length; i++) { %>
             <tr>
                 <td><%= shipments[i]._id %></td>
-                <td>tên</td>
-                <td>đã gửi</td>
+                <td><%= shipments[i].user_id[0].name%></td>
+                <td><%= shipments[i].confirm %></td>
                 <td class="text-center">
                     <% if(shipments[i].delivered) { %> 
                         Đã giao thành công
                     <button  class="btn btn-primary" onclick="deleteDelivered('<%= shipments[i]._id %>')">Xóa</button>  
-                    <button class="btn btn-primary" onclick="sendConfirmation('<%= shipments[i].user_id[0]._id %>')">Gửi xác nhận</button>
+                    <button class="btn btn-primary" onclick="sendConfirmation('<%= shipments[i].user_id[1]._id %>')">Gửi xác nhận</button>
                     <% } else if(shipments[i].returned) { %>
                         Đơn hàng đã trả về 
                     <% } else { %>
@@ -46,7 +46,7 @@
         formDelete.submit();
     }
     function sendConfirmation(user_id) {
-        formConfirmation.action = "/send-confirm-email?id=" + user_id;
+        formConfirmation.action = "/sendEmail?id=" + user_id;
         formConfirmation.submit();
     }
     
@@ -54,9 +54,11 @@
 
 <style>
     /* Định dạng tiêu đề trang */
-h1 {
-  color: #4CAF50; /* Màu xanh lá cây */
-  text-align: center; /* Canh giữa */
+    h1 {
+  text-decoration: underline; /* Hiển thị gạch chân dưới */
+  text-shadow: 2px 2px 4px #4b3708; /* Tạo bóng với màu đỏ (#FF0000), căn x,y,z lần lượt là 2px, 2px, 4px */
+  color: rgba(255, 0, 0, 0.906); /* Màu chữ */
+  text-transform: uppercase;
 }
 
 /* Định dạng màu chữ cho header của bảng */

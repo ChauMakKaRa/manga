@@ -2,6 +2,7 @@ const User = require('../../models/admin');
 const Product = require('../../models/product');
 const Paied = require('../../models/paied');
 const Shipper = require('../../models/shipments');
+const Contact = require('../../models/contact');
 const {mutipleMongsooseToObject} = require('../../until/mongoose');
 
 const homeAdmin = async (req, res, next) => {
@@ -39,10 +40,10 @@ const deleteProduct = async(req, res, next) => {
 }
 
 const detailProduct = async(req, res, next) => {
-    Product.find({})
-        .then(products => res.render('admin/detail', {
+    Product.findOne({id: req.query.id})
+        .then(product => res.render('admin/detail', {
             session: req.session,
-            products: products,
+            product: product,
         }))
         .catch(next);
 }
@@ -76,6 +77,29 @@ const deleteDelivered = async(req, res, next) => {
         .then(() => res.redirect('back'))
         .catch(next);
 }
+
+const Commodities = async(req, res, next) => {
+    res.render("admin/Commodities",{
+        session: req.session
+    });
+
+}
+
+const ContactPage = async(req, res, next) => {
+    await Contact.find({})
+    .then(contacts => res.render('admin/lien_he_admin', {
+        session: req.session,
+
+        contacts: contacts,
+    }))
+    .catch(next);
+}
+
+const deleteContact = async(req, res, next) => {
+    await Contact.deleteOne({_id: req.query.id})
+    .then(() => res.redirect('back'))
+    .catch(next);
+}
 module.exports = {
     homeAdmin, 
     addProduct,
@@ -86,4 +110,7 @@ module.exports = {
     deleteOrder,
     pageDonHang,
     deleteDelivered,
+    Commodities,
+    ContactPage,
+    deleteContact
 }

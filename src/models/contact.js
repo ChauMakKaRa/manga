@@ -7,7 +7,9 @@ const contactsSchema = new mongoose.Schema({
     ref: 'User' ,
 
   },
-  phone: {type: String},
+  name: {
+    type: String
+  },
   email: {type: String},
   content: {type: String},
   // Thêm các trường thông tin khác của contact nếu cần

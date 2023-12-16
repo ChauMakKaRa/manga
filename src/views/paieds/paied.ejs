@@ -1,5 +1,5 @@
 
-<div class="mt-5">
+<div class="mt-5 container">
     <div class="vtrWey"></div>
     <div class="_8jJlG8">
         <div class="nU2ylc">
@@ -15,13 +15,14 @@
             </div>
         </div>
         <div class="Jw2Sc- d-flex row">
-            <div class="FVWWQy col-sm-2" ><%= session.name %> <br>(+84) <%= paieds[0].customer[0].phone %>                    </div>
-            <div class="QsWYfx col-sm-7"><%= paieds[0].customer[0].address %></div>
+            <div class="FVWWQy col-sm-2" >Họ và tên: <%= session.name %> <br>Sđt: (+84) <%= paieds[0].customer.phone %></div>
+            <div class="QsWYfx col-sm-7">Địa chỉ giao hàng: <%= paieds[0].customer[0].address %></div>
             <div class="uk7Wpm col-sm-1" >Mặc định</div>
             <button id="btn-change-address" class="_3WkjWD div-style col-sm-1" onclick="showInputBox()">Thay đổi</button>
         </div>
-    </div>
+<hr>
 
+    </div>
     <form name="paieds-form" method="POST" action="/handlePaieds?_method=PUT" >
         <div class="_3cPNXP">
             <div class="V-sVj2">
@@ -79,7 +80,7 @@
             <div class="row">
                 <div class="col-sm-9" style="margin-top: 10px;">
                     <div class="C-NSr-">Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo 
-                        <a href="https://help.shopee.vn/portal/article/77242" target="_blank" rel="noopener noreferrer">Điều khoản Shopee</a>
+                        <a href="https://help.shopee.vn/portal/article/77242" target="_blank" rel="noopener noreferrer">Điều khoản shop's Kara</a>
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -151,13 +152,12 @@
 </script>
 
 <style>
-    /* Định dạng tiêu đề */
+ 
 h2 {
     text-align: center;
     color: #4CAF50; /* màu xanh lá cây */
 }
 
-/* Định dạng bảng sản phẩm */
 table {
     width: 100%;
     border-collapse: collapse;

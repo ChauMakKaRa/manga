@@ -1,6 +1,8 @@
 
 <form class="container" name="container-form-cart" method="POST" action="/handleFormCart?name=<%= session.name %>" >
-    <h2>Giỏ hàng</h2>
+    
+        <h2>Giỏ hàng</h2>
+
         <table>
             <tr>
                 <th></th>
@@ -151,41 +153,93 @@
 </script>
 
 <style>
-  /* Định dạng tiêu đề "Giỏ hàng" */
+ /* Định dạng tiêu đề "Giỏ hàng" */
+ .container{
+  padding-top: 10px;
+}
+/* Thiết lập font chung */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Định dạng tiêu đề "Giỏ hàng" */
 h2 {
-    color: #4CAF50; /* Màu xanh lá cây */
-    text-align: center; /* Căn giữa */
-    margin-bottom: 20px; /* Khoảng cách phía dưới */
+  color: #4CAF50; /* Màu xanh lá cây */
+  text-align: center; /* Căn giữa */
+  margin-bottom: 20px; /* Khoảng cách phía dưới */
+  
 }
 
 /* Định dạng bảng sản phẩm */
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd; /* Màu viền */
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  background-color: #f2f2f2;  /* Màu viền */
 }
 
-.total-row td {
-    font-weight: bold; /* In đậm cho dòng tổng tiền */
+th {
+    color: white;
+  background-color: #4CAF50; 
+  text-align: center;
+}
+
+.total td {
+  font-weight: bold; /* In đậm cho dòng tổng tiền */
 }
 
 /* Định dạng nút thanh toán */
 .checkout-button {
-    display: block;
-    width: 200px;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #4CAF50; /* Màu nền xanh lá cây */
-    color: white; /* Màu chữ trắng */
-    text-align: center; /* Căn giữa */
-    text-decoration: none; /* Loại bỏ gạch chân */
-    border-radius: 5px; /* Bo tròn góc */
-    border: 0; /* Không viền */
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+  text-align: center; /* Căn giữa */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  border-radius: 5px; /* Bo tròn góc */
+  border: none; /* Không viền */
+}
+
+/* Định dạng các nút thao tác số lượng */
+.btn-secondarys {
+  background-color: #f2f2f2; /* Màu nền xám */
+  border: none; /* Không viền */
+  color: #000; /* Màu chữ đen */
+  padding: 10px;
+  border-radius: 5px; /* Bo tròn góc */
+  cursor: pointer;
+}
+
+/* Định dạng modal xác nhận xóa sản phẩm */
+.modal-content {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.modal-title {
+  color: #4CAF50; /* Màu xanh lá cây */
+}
+
+.btn-primary {
+  background-color: #4CAF50; /* Màu nền xanh lá cây */
+  color: #fff; /* Màu chữ trắng */
+  border: none; /* Không viền */
+  border-radius: 5px; /* Bo tròn góc */
+}
+
+.btn-danger {
+  background-color: #ff0000; /* Màu nền đỏ */
+  color: #fff; /* Màu chữ trắng */
+  border: none; /* Không viền */
+  border-radius: 5px; /* Bo tròn góc */
 }
 
 

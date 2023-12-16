@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Admin User Management</h1>
+    <h1 class="text-center">Admin User Management</h1>
 
     <!-- User List -->
     <div class="card mt-4">
@@ -25,7 +25,7 @@
               <td><%= users[i].email %></td>
               <td><%= users[i].admin_role %></td>
               <td>
-                <a href="editUser?id=<%= users[i]._id %>" class="btn btn-primary">Edit</a>
+                <a href="editUser?id=<%= users[i]._id %>" class="btn btn-primary">Sửa</a>
                 <button 
                   data-bs-toggle="modal" data-id="<%= users[i]._id %>" 
                   data-bs-target="#deleteUser" class="btn btn-danger delete">
@@ -42,12 +42,12 @@
     <!-- Add User Form -->
     <div class="card mt-4">
       <div class="card-header">
-        Add User
+        Thêm User
       </div>
       <div class="card-body">
         <form method="POST" action="addUser">
           <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
+            <label for="name" class="form-label">Tên</label>
             <input type="text" class="form-control" name="name" id="name" required>
           </div>
           <div class="mb-3">
@@ -55,14 +55,14 @@
             <input type="email" class="form-control" name="email" id="email" required>
           </div>
           <div class="mb-3">
-            <label for="role" class="form-label">Role</label>
+            <label for="role" class="form-label">Chức vụ</label>
             <select class="form-control" name="role" id="role" required>
               <option value="admin">Admin</option>
               <option value="shipper">Shipper</option>
               <option value="user">User</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary">Add User</button>
+          <button type="submit" class="btn btn-primary">Thêm User</button>
         </form>
       </div>
     </div>
@@ -113,9 +113,11 @@
 
 <style>
   /* Style for the header */
-h1 {
-  text-align: center;
-  color: #4CAF50; /* Green color */
+  h1 {
+  text-decoration: underline; /* Hiển thị gạch chân dưới */
+  text-shadow: 2px 2px 4px #392121; /* Tạo bóng với màu đỏ (#FF0000), căn x,y,z lần lượt là 2px, 2px, 4px */
+  color: #ff1010; /* Màu chữ */
+  text-transform: uppercase;
 }
 
 /* Style for the card headers */

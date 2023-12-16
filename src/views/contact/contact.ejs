@@ -1,80 +1,110 @@
-<style>
-   
-</style>
-<div class="container">
-<h2>Liên hệ</h2>
-<form method="POST" action="/handleContact">
-    <div class="form-group">
-        <label for="name">Họ và tên:</label>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-        <label for="message">Nội dung:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-    </div>
-    <button class="submit-button">Gửi<i></i></button>
-</form>
+<div class="body-account">
+  <div class="wrapper">
+    <form method="POST" action="handleContact">
+      <h1>Liên hệ</h1>
+      <div class="error-message">
+        
+      </div>
+      <div class="success-message">
+        
+      </div>
+<div class="input-box">
+        <input type="text" placeholder="Họ và tên" class="form-control" id="fullName" name="fullName" required/>
+      </div>
+      <div class="input-box">
+        <input type="email" placeholder="Vui lòng nhập email" class="form-control" id="email" name="email" required/>
+      </div>
+      <div class="input-box">
+        <textarea placeholder="Nội dung" class="form-control" id="message" name="message" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Gửi</button>
+    </form>
+  </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-<script>
-let quantity = 0;
-
-function subtractQuantity() {
-  if (quantity > 0) {
-    quantity--;
-    document.getElementById("quantity").innerHTML = quantity;
-  }
-}
-
-function addQuantity() {
-  quantity++;
-  document.getElementById("quantity").innerHTML = quantity;
-}
-</script>
 
 <style>
-    /* Định dạng tiêu đề trang */
-h2 {
-  text-align: center;
-  color: #4CAF50; /* Màu xanh lá cây */
-  padding-top: 20px; /* Khoảng cách từ đỉnh trang */
-}
 
-/* Định dạng các form group */
-.form-group {
+
+h1 {
+  color: #4CAF50;
   margin-bottom: 20px;
 }
 
-.form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #4CAF50; /* Màu xanh lá cây */
+.error-message p {
+  color: #f00;
 }
 
-.form-group input,
-.form-group textarea {
+.success-message p {
+  color: #008000;
+}
+
+.input-box input,
+.input-box textarea {
+  color: #45a049;
   width: 100%;
   padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-/* Định dạng nút submit */
-.submit-button {
-  display: block;
-  width: 150px;
-  margin: 20px auto;
-  padding: 10px;
-  background-color: #4CAF50; /* Màu nền xanh lá cây */
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
+input::placeholder,
+textarea::placeholder {
+  color: #4CAF50;
 }
 
+.remember-forgot,
+.register-link {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.remember-forgot label {
+  margin-right: 10px;
+  color: #45a049;
+}
+
+.remember-forgot a,
+.register-link a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #1FADFF, #12DAFB, #A7FDCC);
+}
+
+.body-account {
+  margin:20px 0;
+  background-image: url('https://haycafe.vn/wp-content/uploads/2022/03/Background-anime-Conan-cute.jpg');
+  background-size: cover;
+
+  height: 100vh; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-account .wrapper {
+  margin: 0 auto;
+  margin-left: 100px; 
+  width: 40%;
+  background-color: rgba(226, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Horizontally center the form */
+}
 </style>

@@ -4,10 +4,12 @@
     <table class="table mt-4">
         <thead>
             <tr>
-                <th scope="col">Mã sản phẩm</th>
+                <th scope="col">Mã</th>
                 <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Số lượng</th>
+                <th scope="col">Giá bán</th>
+                <th scope="col">Giá vốn</th>
+                <th scope="col">Còn lại</th>
+                <th scope="col">Nhập vào</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -16,10 +18,12 @@
             <tr>
                 <td><%= products[i].id %></td>
                 <td><%= products[i].product_name %></td>
-                <td><%= products[i].product_price %></td>
+                <td><%= products[i].product_price %>$</td>
+                <td><%= products[i].capital_price %>$</td>
+                <td><%= products[i].product_quantity %></td>
                 <td><%= products[i].amount %></td>
-                <td>
-                    <a href="detail" class="btn btn-primary">Xem chi tiết</a> | 
+                <td class="text-center">
+                    <a href="detail?id=<%= products[i].id %>" class="btn btn-primary">Xem chi tiết</a> | 
                     <a href="" class="btn btn-danger" data-bs-toggle="modal" data-id="<%= products[i].id %>" data-bs-target="#deleteProduct">xóa</a></td>
             </tr>
             <% } %>
@@ -73,7 +77,10 @@ body {
 
 /* Thay đổi màu sắc cho tiêu đề */
 h1 {
-  color: #ff5733; /* Màu cam đậm */
+  text-decoration: underline; /* Hiển thị gạch chân dưới */
+  text-shadow: 2px 2px 4px #392121; /* Tạo bóng với màu đỏ (#FF0000), căn x,y,z lần lượt là 2px, 2px, 4px */
+  color: #ff1010; /* Màu chữ */
+  text-transform: uppercase;
 }
 
 /* Thay đổi màu sắc cho button */

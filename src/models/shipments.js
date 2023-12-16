@@ -23,6 +23,9 @@ const shipmentsSchema = new mongoose.Schema({
       user_id:{
         type: Object, ref: 'Admin',
       },
+      confirm: {
+        type: String,
+      }
 });
 
 const Shipments = mongoose.model('shipments', shipmentsSchema);;
